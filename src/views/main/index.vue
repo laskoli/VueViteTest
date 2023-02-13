@@ -1,17 +1,11 @@
 <template>
-    <div>
-我是移动端的首页
-    </div>
+
+        <navigation-vue/>
+
 </template>
 
-<script>
-export default {
-    setup () {
-        
-
-        return {}
-    }
-}
+<script setup>
+import navigationVue from './components/navigation/index.vue'
 </script>
 
 <style lang="scss" scoped>
