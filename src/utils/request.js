@@ -1,14 +1,16 @@
 import axios from "axios";
 import md5 from 'js-md5';
 
+// console.log(import.meta.env.VITE_BASE_API);
+
 export const getSecret = () => {
     const codetype = Number.parseInt(Date.now() / Math.pow(10, 3))
-    const icode = md5(`$(codetype)LGD_Sunday-1991-12-30`)
-    return { codetype, icode}
+    const icode = md5(``)
+    return { codetype, icode }
 }
 
 const service = axios.create({
-    baseURL: '/api',
+    baseURL: import.meta.env.VITE_BASE_API,
     timeout: 5000
 })
 
