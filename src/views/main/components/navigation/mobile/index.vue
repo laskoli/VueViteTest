@@ -13,6 +13,7 @@
       <!-- 汉堡按钮 -->
       <li
         class="fixed top-0 right-[-1px] h-4 px-1 flex items-center bg-white z-20 shadow-l-white"
+        @click="onShowPopup"
       >
         <m-svg-icon class="w-1.5 h-1.5" name="hamburger"></m-svg-icon>
       </li>
@@ -22,7 +23,7 @@
         :key="item.id"
         class="shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4"
         :class="{
-            'text-zinc-100': currentCategoryIndex === index
+          'text-zinc-100': currentCategoryIndex === index
         }"
         :ref="setItemRef"
         @click="onItemClick(index)"
@@ -30,7 +31,9 @@
         {{ item.name }}
       </li>
     </ul>
-    <m-popup></m-popup>
+    <m-popup v-model="isVisable">
+      <div>内容</div>
+    </m-popup>
   </div>
 </template>
 
@@ -80,7 +83,7 @@ watch(currentCategoryIndex, (val) => {
   //console.log(rect)
   sliderStyle.value = {
     //滑块的位置 = ul 横向滚动的位置 + 当前元素的 left - ul 的 padding
-    transform: `translateX(${ulScrollLeft.value + left - 10}px)`,  
+    transform: `translateX(${ulScrollLeft.value + left - 10}px)`,
     width: width + 'px'
   }
 })
@@ -88,6 +91,12 @@ watch(currentCategoryIndex, (val) => {
 // item 点击事件
 const onItemClick = (index) => {
   currentCategoryIndex.value = index
+}
+
+// 控制 popup 展示
+const isVisable = ref(false)
+const onShowPopup = () => {
+  isVisable.value = true
 }
 </script>
 
