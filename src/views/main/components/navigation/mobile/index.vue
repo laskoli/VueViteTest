@@ -30,6 +30,7 @@
         {{ item.name }}
       </li>
     </ul>
+    <m-popup></m-popup>
   </div>
 </template>
 
@@ -49,7 +50,7 @@ defineProps({
 // 滑块
 const sliderStyle = ref({
   transform: 'translateX(0px)',
-  width: '60px'
+  width: '52px'
 })
 
 // 选中 item 下标
